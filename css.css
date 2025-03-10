@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+}
+
+.ibmplexmono {
+    font-family: 'IBMPlexMono', monospace;
+}
+
+body {
+    font-family: 'IBMPlexMono', Fallback, sans-serif;
+}
+
+html {
+    font-family: 'IBMPlexMono', monospace;
+}

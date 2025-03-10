@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css.css">
+  </head>
+  <body class="bg-black">
+    <center>
+        <br>
+        <div class="relative w-full flex justify-center mt-4">
+            <div class="w-1/5 min-w-100 h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl font-bold text-white font-mono">LANDON MELLO</h1>
+                <h1 class="text-xl font-bold text-white font-mono">Mechanical Engineer</h1>
+            </div>
+            <div class="absolute right-1/5 top-1/2 min-w-35 transform -translate-y-1/2 flex flex-col items-start space-y-0">
+                <a href="mailto:contact@landonmello.com" class="text-white font-mono border-2 border-[#262626] w-2/3 hover:border-[#ef6300] transition">Email</a>
+                <a href="https://github.com/lmello1" target="_blank" class="text-white font-mono border-2 border-[#262626] w-2/3 hover:border-[#ef6300] transition">GitHub</a>
+                <a href="https://linkedin.com/in/landonmello" target="_blank" class="text-white font-mono border-2 border-[#262626] w-2/3 hover:border-[#ef6300] transition">LinkedIn</a>
+            </div>
+        </div>        
+        <nav class="mt-4 flex justify-center">
+            <a href="index.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">HOME</a>
+            <a href="blog.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">BLOG</a>
+            <a href="projects.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">PROJECTS</a>
+        </nav>
+        <br>
+        <div class="w-7/10 p-1 border-1 bg-white">
+            <div class="p-1 border-4 border-black">
+                <div class="p-2 bg-black text-white font-mono text-center">
+                    <p>
+                        Welcome to my personal website! I'm a mechanical engineering student at 
+                        California State University, Chico. I have a strong background in both engineering 
+                        and electronics, and I enjoy applying my skills to build cool projects and solve 
+                        interesting problems.
+                        <br><br>
+                        I'm an avid maker, always working on something new, whether it's designing devices, 
+                        repairing retro hardware, or learning new techniques. Feel free to check out my projects 
+                        on the projects page, or check out my blog posts that if you are lucky get updated once 
+                        per year.
+                    </p>
+                    <br>
+                    <br>
+                    <h1 class="text-xl font-bold text-white font-mono">SKILLS</h1>
+                    <br>
+                    <ul class="list-none text-left pl-5 pr-5">
+                        <li class="border-b border-gray-400 pb-2 mb-2">
+                            <strong>CAD:</strong> Autodesk Inventor, SolidWorks, Autodesk FEA & CFD, ANSYS
+                        </li>
+                        <li class="border-b border-gray-400 pb-2 mb-2">
+                            <strong>Electronics:</strong> PCB Design & Simulation (KiCad), SMD/THC Soldering, SOC Programming
+                        </li>
+                        <li class="border-b border-gray-400 pb-2 mb-2">
+                            <strong>Fabrication:</strong> CNC, Manual Lathe & Mill, FDM & SLA Additive Manufacturing
+                        </li>
+                        <li>
+                            <strong>Programming:</strong> Linux CLI, Git, Nginx, C++
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                    <h1 class="text-xl font-bold text-white font-mono">FEATURED PROJECTS</h1>
+                    <br>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="w-60 h-60 border-4 border-black bg-[#262626] text-white font-mono flex flex-col items-center p-2">
+                            <img src="images/coilgun.png" alt="Electromagnetic Coilgun" class="w-5/6 h-24 object-cover border-2 border-white">
+                            <h2 class="text-lg font-bold mt-2">Coilgun</h2>
+                            <p class="text-sm text-center">Multi-stage high-voltage coilgun using IGBTs.</p>
+                            <a href="projects/coilgun.html" class="mt-auto text-blue-400 hover:text-[#ef6300]">View Project →</a>
+                        </div>
+                        <div class="w-60 h-60 border-4 border-black bg-[#262626] text-white font-mono flex flex-col items-center p-2">
+                            <img src="images/noaa.png" alt="NOAA Satellite Receiver" class="w-5/6 h-24 object-cover border-2 border-white">
+                            <h2 class="text-lg font-bold mt-2">GOES Receiver</h2>
+                            <p class="text-sm text-center">Real-time weather satellite downlink using SDR</p>
+                            <a href="projects/goes.html" class="mt-auto text-blue-400 hover:text-[#ef6300]">View Project →</a>
+                        </div>
+                        <div class="w-60 h-60 border-4 border-black bg-[#262626] text-white font-mono flex flex-col items-center p-2">
+                            <img src="images/mccs.png" alt="MRMT" class="w-5/6 h-24 object-cover border-2 border-white">
+                            <h2 class="text-lg font-bold mt-2">Rack Mount Standard</h2>
+                            <p class="text-sm text-center">A connection standard for High Speed rack mount devices.</p>
+                            <a href="projects/mrmt.html" class="mt-auto text-blue-400 hover:text-[#ef6300]">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </center>
+  </body>
+</html>
