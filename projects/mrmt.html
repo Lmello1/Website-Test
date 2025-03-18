@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css.css">
+  </head>
+  <body class="bg-black">
+    <center>
+        <br>
+        <div class="w-1/5 min-w-100 h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl font-bold text-white font-mono">LANDON MELLO</h1>
+            <h1 class="text-xl font-bold text-white font-mono">Mechanical Engineer</h1>
+        </div>
+        <nav class="mt-4 flex justify-center">
+            <a href="../index.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">HOME</a>
+            <a href="../blog.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">BLOG</a>
+            <a href="../projects.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">PROJECTS</a>
+        </nav>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono text-center">
+                <h2>Modular Rack Mount Things (MRMT)</h2>
+                <br>
+                <p>The MRMT project is a general-purpose framework designed to provide a flexible, high-speed, and easy to design for platform with a focus on modularity and affordability. I have some upcoming SDR projects that have a need for high speed communication, and after roughing out some ideas for that, I thought it would be cool to build out the system into its own standard that I can use for any upcoming projects.</p>
+                <br>
+                <p>For the backplane we drew inspiration from the military OpenVPX standard with high speed board to board communication for latency-sensitive and high bandwidth applications, along with 100BASE-T ethernet feeding into a router board for slower speed board to board communication along with data input and output.</p>
+                <br>
+                <object width="400" height="500" type="application/pdf" data="../img/MRMT-Drawing.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0">
+                    <p>No PDF for you :(</p>
+                </object>
+                <br>
+                <p>The MRMT system features a standard PCB size of 95mm x 100mm with DIN41612 connectors for robust module-to-backplane communication, there are two backplane connectors, one for the high speed surface (HSS) which includes the high speed board to board communication along with the 100BASE-T ethernet, and another connector called the utility surface (US) providing power at 5 and 12 volts, and one low speed communication surface. This is done so that low speed devices do not need to spend money on a large DIN41612 connector to communicate on the HSS</p>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html>
