@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css.css">
+  </head>
+  <body class="bg-black">
+    <center>
+        <br>
+        <div class="w-1/5 min-w-100 h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl font-bold text-white font-mono">LANDON MELLO</h1>
+            <h1 class="text-xl font-bold text-white font-mono">Mechanical Engineer</h1>
+        </div>
+        <nav class="mt-4 flex justify-center">
+            <a href="../index.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">HOME</a>
+            <a href="../blog.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">BLOG</a>
+            <a href="../projects.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">PROJECTS</a>
+        </nav>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono text-center">
+              <h2 id="introduction">Introduction</h2>
+    <p>If you have spent any amount of time on my website you have most likely seen my original <a href="">PCB business card</a>. While it was a great conversation starter it had a couple issues. The main one for me was size, while the height and width were that of a regular business card, the battery holder on the back made it much to large to conveniently fit anywhere, the second is the fact that a business card sized game console is just not that new anymore. I have seen countless projects (<a href="https://www.youtube.com/watch?v=OW_Sk_dbQm8">like so</a>) that absolutely blow mine out of the water in terms of looks and performance. Because of this I decided to go back to the drawing board and make something I have never seen done before in a business card format.</p>
+    <h2 id="alu-basics">ALU Basics</h2>
+    <p>An ALU(Arithmetic Logic Unit) is the beating heart of any processor and is responsible for arithmetic calculations like addition and subtraction. If you are familiar with Ben Eaters wonderful <a href="https://eater.net/8bit/"> breadboard 8 bit computer</a> project you have seen this type of ALU in use before.</p>
+    <p>I have always had an interest in logic gate computers and thought it would make for one very unique business card. I could have just added an 4 or 8 bit adder (like the popular 74ls283 chip series) and called it a day, but I decided to limit myself to only basic logic gates (Maybe in the future this could be done with all transistors, but that is a project for another day). Due to the limited space available on a business card sized PCB, and the fact that I wanted to keep the price below 5 dollars, I fought back the feature creep urge to constantly add features to the board. I settled on a final feature set of a 8 bit adder with the option to do subtraction operations as well</p>
+    <p>I started the project with a basic ALU</p>
+    <pre><code>
+    A1─────┬──►│XOR                           
+           │   │XOR───┬────►│XOR              
+    B1───┬─┼──►│XOR   │     │XOR────►SUM      
+         │ │        ┌─│────►│XOR              
+    C────│─│────────┤ │                       
+         │ │        │ └►│&amp;&amp;                   
+         │ │        │   │&amp;&amp;───►│OR            
+         │ └──►│&amp;&amp;  └──►│&amp;&amp;    │OR──►Carry Out
+         │     │&amp;&amp;────────────►│OR            
+         └────►│&amp;&amp;                            
+    </code></pre>
+    <p>This may look complex at first glance, but when you break it down into its individual paths, it begins to make more sense. A1 and B1 are the two main inputs along with C, the carry input from the prior ALU, if only one is active the output (SUM) should be active, however if both inputs (A1 &amp; B1) are active, than the SUM light should not be active, and the Carry Out instead should be active. The final top XOR gate exists to allow for both A1 and B1 to be true, while also handling a carry in bit from the prior ALU. In this situation both the SUM and Carry Out lines should be true.</p>
+    <p>Lets give a real life example, Imagine an input of</p>
+    <p>A1 | 1<br>
+    B1 | 0<br>
+    C | 0</p>
+    <p>The first XOR gate is met with a 1 and a 0, resulting in a 1</p>
+    <pre><code>
+    A1(1)────►│XOR                           
+              │XOR──►(1)
+    B1(0)────►│XOR                         
+    </code></pre>
+    <p>With no carry bit, the second XOR gate is given a 1,0 input, resulting in 1.</p>
+    <pre><code>
+    A1(1)─────►│XOR                           
+               │XOR───(1)──►│XOR              
+    B1(0)─────►│XOR         │XOR────►SUM(1)     
+    C (0)─────────────(0)──►│XOR     
+    </code></pre>
+    <p>Lets now look at an example that activates the carry bit, an input of 1 on both A1 and B1<br>
+    A1 | 1<br>
+    B1 | 1<br>
+    C | 0<br>
+    The first XOR gate results in 0, however the AND gate below results in true</p>
+    <pre><code>
+    A1(1)──┬──►│XOR                           
+           │   │XOR─►(0)            
+    B1(1)┬─┼──►│XOR        
+         │ │           
+         │ └(1)►│&amp;&amp; 
+         │      │&amp;&amp;─►(1)          
+         └──(1)►│&amp;&amp;                            
+    </code></pre>
+    <p>This 1 from the &amp;&amp; gate than goes to the next OR gate, where it is allowed through, setting the Carry Out true.</p>
+    <pre><code>
+    A1(1)──┬──►│XOR                           
+           │   │XOR───┬─(0)►│XOR              
+    B1(1)┬─┼──►│XOR   │     │XOR────►SUM(0)      
+         │ │        ┌─│─(0)►│XOR              
+    C(0)─│─│────────┤ │                       
+         │ │        │ └(0)►│&amp;&amp;                   
+         │ │        │      │&amp;&amp;─(0)►│OR            
+         │ └(1)►│&amp;&amp; └──(0)►│&amp;&amp;     │OR──►Carry Out(1)
+         │      │&amp;&amp;(1)─────────(1)►│OR    
+         └──(1)►│&amp;&amp;                            
+    </code></pre>
+    <p>Now lets look at a more complicated situation, Imagine an input of<br>
+    A1 | 1<br>
+    B1 | 0<br>
+    C | 1<br>
+    This gives us a problem we have not seen before. Logically, we know this will result in a high Carry Out signal, but lets look at the logic gates that cause this result.</p>
+    <pre><code>
+    A1(1)──┬──►│XOR                           
+           │   │XOR───┬─(1)►│XOR              
+    B1(0)┬─┼──►│XOR   │     │XOR────►SUM(0)      
+         │ │        ┌─│─(1)►│XOR              
+    C(1)─│─│────────┤ │                       
+         │ │        │ └(1)►│&amp;&amp;                   
+         │ │        │      │&amp;&amp;─(1)►│OR            
+         │ └(1)►│&amp;&amp; └──(1)►│&amp;&amp;     │OR──►Carry Out(1)
+         │      │&amp;&amp;(0)─────────(0)►│OR    
+         └──(0)►│&amp;&amp;                            
+    </code></pre>
+    <p>The first XOR gate is cleared, as in example 1, but we are stopped with the carry bit at the second XOR gate. However that same carry signal allows for the activation of the AND gate, resulting in the activation of the OR gate and an active Carry Out signal.</p>
+    <p>When these ALU modules are connected together, with the Carry Out being linked to the Carry In of the next module, the result is a scalable adder design. 8 of these modules make up the ALU on my business card, with the addition of a XOR gate on the B inputs, a switch can be added to allow for subtraction as well.</p>
+    <p>Below is an interactive ALU demo, you can try out the examples above, or put in any combination of inputs you want!</p>
+ 
+    <!-- ALU DEMO DO NOT REMOVE WHEN UPDATING MD -->
+       <div>
+        <label>A1: <input type="checkbox" id="A1"></label>
+        <label>B1: <input type="checkbox" id="B1"></label>
+        <label>Carry In (C): <input type="checkbox" id="C"></label>
+    </div>
+    <pre class="ascii-art">
+A1(<span class="a1">0</span>)──┬──►│XOR                           
+       │   │XOR───┬─(<span class="xor1">0</span>)►│XOR              
+B1(<span class="b1">0</span>)┬─┼──►│XOR   │     │XOR────►SUM(<span id="xor2">0</span>)      
+     │ │        ┌─│─(<span class="c">0</span>)►│XOR              
+C(<span class="c">0</span>)─│─│────────┤ │                       
+     │ │        │ └(<span class="xor1">0</span>)►│&&                   
+     │ │        │      │&&─(<span id="and2">0</span>)►│OR            
+     │ └(<span class="a1">0</span>)►│&& └──(<span class="c">0</span>)►│&&     │OR──►Carry Out(<span id="or">0</span>)
+     │      │&&(<span id="and1">0</span>)────────────►│OR    
+     └──(<span class="b1">0</span>)►│&&                            
+    </pre>
+    <script src="../alusim.js"></script>
+    <!-- END ALU DEMO -->
+
+    <p>A full schematic of my PCB can be found on the github repository</p>
+    <p>####HERE####</p>
+    <h2 id="board-design">Board Design</h2>
+    <p>One of the biggest inspirations that made this project possible was finding this super smart and low profile <a href="https://x.com/matseng/status/1640683242490585089/"> 2032 battery holder</a> using parts of a paper clip and a unique footprint to hold the coin cell within the PCB. This massively cuts down on the depth of the finished PCB, and improves the look by a lot. Other than that the next challenge was finding low profile SMD switches, I settled on <a href="https://www.lcsc.com/product-detail/_SHOU-HAN-_C2681568.html">C2681568</a> from LCSC. With a total height of 1.4mm above the PCB plane, this was the lowest profile option I could find, and for only 3 cents each the price made these switches an easy choice. I went through many design revisions for the layout of switches and eventually decided on the following layout.</p>
+    <p>####IMAGE PLACEHOLDER&gt; DO NOT FORGET####</p>
+    <p>With switches on both sides of the pcb, this brings the total thickness to around 4.6mm with a 1.8mm PCB thickness. (IMO the sweet spot for nice feeling PCBs). The rest of the board was fairly easy to lay out, although the limiting size did make some of the routing a little tricky.</p>
+    <p>WIP</p>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html>

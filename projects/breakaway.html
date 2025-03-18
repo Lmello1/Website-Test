@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css.css">
+  </head>
+  <body class="bg-black">
+    <center>
+        <br>
+        <div class="w-1/5 min-w-100 h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl font-bold text-white font-mono">LANDON MELLO</h1>
+            <h1 class="text-xl font-bold text-white font-mono">Mechanical Engineer</h1>
+        </div>
+        <nav class="mt-4 flex justify-center">
+            <a href="../index.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">HOME</a>
+            <a href="../blog.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">BLOG</a>
+            <a href="../projects.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">PROJECTS</a>
+        </nav>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono text-center">
+                <h2 id="breakaway-security-cards">Breakaway security cards</h2>
+                <p>If you have ever seen movies that show nuclear launches than you have probably already seen these!<br>
+                <center>
+                <iframe src="https://www.youtube.com/embed/8-T_uhQ0iE4?start=207" width="90%" height="250">  &#10;</iframe>
+                </center>
+                <p>These are the cards that snap apart to reveal the protected launch codes inside. What was surprising to me is how little info there is about them online! The closest name for these cards I could find was the one used for presidential launch codes commonly called “the biscuit”. I eventually decided that the term “Breakaway” was fitting.</p>
+                <br>
+                <p>The key part of these is the ability for 3d printers to stop mid print. allowing the placement of an index card into the middle of the print, and than allowing the printer to print over the card and complete the print. The result is a fully encased 3d printed structure with the index card inside. The only way to view the information on that card is to break away the 3d printed shell.</p>
+                <br>
+                <p>The CAD model is very simple. Just the outside shape with a cavity for the index cards in the middle. There is also a score on both sides of the model to make sure it snaps perfectly in half.</p>
+                <br>
+                <li>I needed a way to only print the top and bottom layer on the inside in one direction</li>
+                </ul>
+                <p>The strength of 3d prints depends a LOT on the direction the material is extruded in. When you try to break a 3d print against the layer lines you very quickly find out that PLA can be quite strong! Because FDM 3d printing works by layering extruded plastic on top of each other there is always a weak spot formed when a new hot layer is added to an already cooled layer. Here was my first attempt with layer lines running the wrong way and a way too thick outer shell.</p>
+                <br>
+                <center>
+                <img src="../img/Breakaway-card-fail-compressed.jpg" alt="failed breakaway" width="50%">
+                </center>
+                <p>After a quick redesign and some digging around in the slicer settings I found a way to dictate the direction that these layer lines were printed in. After starting the print of  another slimmed down model taking care to make sure the score line is in the same orientation of the layer lines (snapping with the “grain” of the 3d print). Once the printer finished the walls of the inner cavity I was able to simply slide the index card in and let the printer continue the print.</p>
+                <center>
+                <img src="../img/Breakaway-card-print-compressed.jpg" alt="index card in printer" width="50%">
+                </center>
+                <p>And this version finally did it! I could spend more time tweaking the CAD model and slicer settings to get a better break, I think this works just fine for my own use. I do not have anything as important as nuclear launch codes to secure in here however I do plan to use them as creative holders for one time use 2fa passwords! It could also make for a very special card if it could survive in the mail.</p>
+                <center>
+                <iframe src="../img/Breakaway-card-compressed.mp4" width="90%" height="250">  &#10;</iframe>
+                </center>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html>

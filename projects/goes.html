@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css.css">
+  </head>
+  <body class="bg-black">
+    <center>
+        <br>
+        <div class="w-1/5 min-w-100 h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl font-bold text-white font-mono">LANDON MELLO</h1>
+            <h1 class="text-xl font-bold text-white font-mono">Mechanical Engineer</h1>
+        </div>
+        <nav class="mt-4 flex justify-center">
+            <a href="../index.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">HOME</a>
+            <a href="../blog.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">BLOG</a>
+            <a href="../projects.html" class="w-1/10 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition">PROJECTS</a>
+        </nav>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono text-center">
+                <h2>GOES Receiver, Demodulator, and Web Server</h2>
+                <br>
+                <p>The GOES (Geostationary Operational Environmental Satellite) satellites are a series of weather observation satellites launched by NOAA to observe weather conditions over North America. The first GOES satellites was launched in the early 70s as GOES-1. The program was a success and launches continued over the years leading us to today where we have both GOES-16 as GOES-EAST and GOES-18 as GOES-WEST. These satellites are positioned in geostationary orbit. Meaning they orbit the Earth at the same rate as its rotation, allowing them to remain in a fixed position in the sky in relation to someone on earth. This means we can pull data from it 24/7 with a static antenna!</p>
+                <br>
+                <p>The process of going from space noise to image is split into two main steps. First the signal is captured, demodulated, decoded, and packed into LRIT files. This processing is done by the Raspberry Pi 4b outside. From there it goes through Ethernet cable to my server inside called Hermes that further processes those LRIT files to the final images and data.</p>
+                <br>
+                <h2 id="receiver-hardware">Receiver hardware</h2>
+                <br>
+                <p>All the reception hardware is built into a water-resistant box bought from one of the most respected hardware stores ever (harbor freight). From the 1.7Ghz antenna the signal is fed into the box into a Nooelec SAWbird, this device does two important things. It first acts as a Low Noise Amplifier (LNA) to boost the 1688Mhz signal, it also has a SAW filter to cut down any frequencies other than the wanted 1688Mhz LRIT band. From there it goes into a Nooelec NESDR v4 SDR than into the Raspberry Pi. All of this hardware is held inside the box with a 3d printed backplate. This was done to limit the amount of stress that happened to the signal cables and to allow proper airflow to the Raspberry Pi.</p>
+                <br>
+                <h2 id="server-hardware">Server Hardware</h2>
+                <br>
+                <p>I got this server specifically for this project and it may have been the best 100 dollars I spent! The same server you are reading this website from right now! It runs on a Intel Xeon E3-1220 V2 with 32Gigs of ddr3 ram. Most importantly for this project it has 6 drive bays! Running raid5 with the 1tb drives the server came with (I told you I got a good deal) gives me a total of 5tb usable space with one drive redundancy! Goesproc hardly takes up any processing power to run which lets me do a lot more with the server than just GOES.</p>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html>
