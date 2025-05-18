@@ -31,49 +31,56 @@
         <br>
         <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
           <div class="p-1 border-4 border-black">
-            <div class="p-2 bg-black text-white font-mono text-center">
-              <h2 id="introduction">Introduction</h2>
+            <div class="p-2 bg-black text-white font-mono">
+              <h2 id="introduction" class="text-center">Introduction</h2>
     <p>If you have spent any amount of time on my website you have most likely seen my original <a href="">PCB business card</a>. While it was a great conversation starter it had a couple issues. The main one for me was size, while the height and width were that of a regular business card, the battery holder on the back made it much to large to conveniently fit anywhere, the second is the fact that a business card sized game console is just not that new anymore. I have seen countless projects (<a href="https://www.youtube.com/watch?v=OW_Sk_dbQm8">like so</a>) that absolutely blow mine out of the water in terms of looks and performance. Because of this I decided to go back to the drawing board and make something I have never seen done before in a business card format.</p>
-    <h2 id="alu-basics">ALU Basics</h2>
+    <h2 id="alu-basics" class="text-center">ALU Basics</h2>
     <p>An ALU(Arithmetic Logic Unit) is the beating heart of any processor and is responsible for arithmetic calculations like addition and subtraction. If you are familiar with Ben Eaters wonderful <a href="https://eater.net/8bit/"> breadboard 8 bit computer</a> project you have seen this type of ALU in use before.</p>
     <p>I have always had an interest in logic gate computers and thought it would make for one very unique business card. I could have just added an 4 or 8 bit adder (like the popular 74ls283 chip series) and called it a day, but I decided to limit myself to only basic logic gates (Maybe in the future this could be done with all transistors, but that is a project for another day). Due to the limited space available on a business card sized PCB, and the fact that I wanted to keep the price below 5 dollars, I fought back the feature creep urge to constantly add features to the board. I settled on a final feature set of a 8 bit adder with the option to do subtraction operations as well</p>
     <p>I started the project with a basic ALU</p>
-    <pre><code>
-    A1─────┬──►│XOR                           
-           │   │XOR───┬────►│XOR              
-    B1───┬─┼──►│XOR   │     │XOR────►SUM      
-         │ │        ┌─│────►│XOR              
-    C────│─│────────┤ │                       
-         │ │        │ └►│&amp;&amp;                   
-         │ │        │   │&amp;&amp;───►│OR            
-         │ └──►│&amp;&amp;  └──►│&amp;&amp;    │OR──►Carry Out
-         │     │&amp;&amp;────────────►│OR            
-         └────►│&amp;&amp;                            
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
+A1─────┬──►│XOR                           
+       │   │XOR───┬────►│XOR              
+B1───┬─┼──►│XOR   │     │XOR────►SUM      
+     │ │        ┌─│────►│XOR              
+C────│─│────────┤ │                       
+     │ │        │ └►│&amp;&amp;                   
+     │ │        │   │&amp;&amp;───►│OR            
+     │ └──►│&amp;&amp;  └──►│&amp;&amp;    │OR──►Carry Out
+     │     │&amp;&amp;────────────►│OR            
+     └────►│&amp;&amp;                            
     </code></pre>
+    </div>
     <p>This may look complex at first glance, but when you break it down into its individual paths, it begins to make more sense. A1 and B1 are the two main inputs along with C, the carry input from the prior ALU, if only one is active the output (SUM) should be active, however if both inputs (A1 &amp; B1) are active, than the SUM light should not be active, and the Carry Out instead should be active. The final top XOR gate exists to allow for both A1 and B1 to be true, while also handling a carry in bit from the prior ALU. In this situation both the SUM and Carry Out lines should be true.</p>
     <p>Lets give a real life example, Imagine an input of</p>
     <p>A1 | 1<br>
     B1 | 0<br>
     C | 0</p>
     <p>The first XOR gate is met with a 1 and a 0, resulting in a 1</p>
-    <pre><code>
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
     A1(1)────►│XOR                           
               │XOR──►(1)
     B1(0)────►│XOR                         
     </code></pre>
+    </div>
     <p>With no carry bit, the second XOR gate is given a 1,0 input, resulting in 1.</p>
-    <pre><code>
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
     A1(1)─────►│XOR                           
                │XOR───(1)──►│XOR              
     B1(0)─────►│XOR         │XOR────►SUM(1)     
     C (0)─────────────(0)──►│XOR     
     </code></pre>
+    </div>
     <p>Lets now look at an example that activates the carry bit, an input of 1 on both A1 and B1<br>
     A1 | 1<br>
     B1 | 1<br>
     C | 0<br>
     The first XOR gate results in 0, however the AND gate below results in true</p>
-    <pre><code>
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
     A1(1)──┬──►│XOR                           
            │   │XOR─►(0)            
     B1(1)┬─┼──►│XOR        
@@ -82,8 +89,10 @@
          │      │&amp;&amp;─►(1)          
          └──(1)►│&amp;&amp;                            
     </code></pre>
+    </div>
     <p>This 1 from the &amp;&amp; gate than goes to the next OR gate, where it is allowed through, setting the Carry Out true.</p>
-    <pre><code>
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
     A1(1)──┬──►│XOR                           
            │   │XOR───┬─(0)►│XOR              
     B1(1)┬─┼──►│XOR   │     │XOR────►SUM(0)      
@@ -95,12 +104,14 @@
          │      │&amp;&amp;(1)─────────(1)►│OR    
          └──(1)►│&amp;&amp;                            
     </code></pre>
+    </div>
     <p>Now lets look at a more complicated situation, Imagine an input of<br>
     A1 | 1<br>
     B1 | 0<br>
     C | 1<br>
     This gives us a problem we have not seen before. Logically, we know this will result in a high Carry Out signal, but lets look at the logic gates that cause this result.</p>
-    <pre><code>
+    <div class="ascii-container">
+    <pre class="ascii-art"><code>
     A1(1)──┬──►│XOR                           
            │   │XOR───┬─(1)►│XOR              
     B1(0)┬─┼──►│XOR   │     │XOR────►SUM(0)      
@@ -112,17 +123,18 @@
          │      │&amp;&amp;(0)─────────(0)►│OR    
          └──(0)►│&amp;&amp;                            
     </code></pre>
-    <p>The first XOR gate is cleared, as in example 1, but we are stopped with the carry bit at the second XOR gate. However that same carry signal allows for the activation of the AND gate, resulting in the activation of the OR gate and an active Carry Out signal.</p>
+    </div>
     <p>When these ALU modules are connected together, with the Carry Out being linked to the Carry In of the next module, the result is a scalable adder design. 8 of these modules make up the ALU on my business card, with the addition of a XOR gate on the B inputs, a switch can be added to allow for subtraction as well.</p>
     <p>Below is an interactive ALU demo, you can try out the examples above, or put in any combination of inputs you want!</p>
  
     <!-- ALU DEMO DO NOT REMOVE WHEN UPDATING MD -->
+    <div class="ascii-container">
        <div>
         <label>A1: <input type="checkbox" id="A1"></label>
         <label>B1: <input type="checkbox" id="B1"></label>
         <label>Carry In (C): <input type="checkbox" id="C"></label>
-    </div>
-    <pre class="ascii-art">
+       </div>
+       <pre class="ascii-art">
 A1(<span class="a1">0</span>)──┬──►│XOR                           
        │   │XOR───┬─(<span class="xor1">0</span>)►│XOR              
 B1(<span class="b1">0</span>)┬─┼──►│XOR   │     │XOR────►SUM(<span id="xor2">0</span>)      
@@ -133,7 +145,8 @@ C(<span class="c">0</span>)─│─│────────┤ │
      │ └(<span class="a1">0</span>)►│&& └──(<span class="c">0</span>)►│&&     │OR──►Carry Out(<span id="or">0</span>)
      │      │&&(<span id="and1">0</span>)────────────►│OR    
      └──(<span class="b1">0</span>)►│&&                            
-    </pre>
+       </pre>
+    </div>
     <script src="../alusim.js"></script>
     <!-- END ALU DEMO -->
 

@@ -137,3 +137,37 @@ button:focus {
     break-inside: avoid;
   }
 }
+
+/* ASCII Art Styles */
+pre {
+  font-family: 'IBMPlexMono', monospace;
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.2;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  display: inline-block;
+  min-width: min-content;
+}
+
+.ascii-container {
+  text-align: initial;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ascii-art {
+  font-family: 'IBMPlexMono', monospace;
+  white-space: pre !important;
+  margin: 1em 0;
+  padding: 1em;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: block;
+  overflow-x: auto;
+}
+code {
+  font-family: 'IBMPlexMono', monospace;
+  white-space: pre !important;
+}
