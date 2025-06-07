@@ -39,7 +39,7 @@ html {
 body {
   background-color: var(--color-background);
   margin: 0;
-  font-family: monospace;
+  font-family: 'IBMPlexMono', monospace;
   color: var(--color-text);
 }
 
