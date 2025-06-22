@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCB Business Card Project - Landon Mello</title>
+    <meta name="description" content="PCB Business Card - A custom electronics project." />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css.css">
+    <style>
+      h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <header class="flex flex-col items-center mt-4">
+        <div class="relative w-full flex flex-col md:flex-row justify-center items-center mt-4">
+            <div class="w-full md:w-1/5 min-w-[300px] h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center" style="white-space: nowrap;">
+                <h1 class="text-4xl font-bold text-white">LANDON MELLO</h1>
+                <p class="text-xl font-bold text-white">Mechanical Engineer</p>
+            </div>
+            <nav class="mt-4 md:mt-0 md:absolute md:right-1/5 md:top-1/2 md:transform md:-translate-y-1/2 flex flex-col items-center space-y-0">
+                <a href="mailto:contact@landonmello.com" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="Email Contact">Email</a>
+                <a href="https://github.com/lmello1" target="_blank" rel="noopener noreferrer" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="GitHub Profile">GitHub</a>
+                <a href="https://linkedin.com/in/landonmello" target="_blank" rel="noopener noreferrer" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="LinkedIn Profile">LinkedIn</a>
+            </nav>
+        </div>        
+        <nav class="mt-4 flex justify-center" aria-label="Main navigation">
+            <a href="../index.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">HOME</a>
+            <a href="../blog.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">BLOG</a>
+            <a href="../projects.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">PROJECTS</a>
+        </nav>
+    </header>
+    <center>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono">
+              <h2 id="introduction" class="text-center">PCB Business Card: The ProtoPCB Project</h2>
+              
+              <p>The ProtoPCB is a unique business card that packs an ATTINY3227 chipset, a 256 LED matrix, and interactive games into a business card sized PCB. Powered by a CR2032 battery and having 3 low profile buttons as inputs, the possibilities are nearly endless.</p>
+              
+              <br>
+              
+              <h2 id="descriptions" class="text-center">Description</h2>
+              
+              <p>The ProtoPCB is based on the ATTINY3227 chipset, which interacts with the 4 74HC595D shift registers that run the 256 LEDs, resulting in a very tightly packed matrix display. It is programmed with a built-in UDPI interface and is also compatible with a 3D printed programming jig for easy software flashes.</p>
+              
+              <p>The current code on GitHub includes examples for basic LED test programs along with a simple game of Snake, with more exciting games like Pong, Tic Tac Toe, and Tetris planned for sometime in the future™.</p>
+              
+              <br>
+              
+              <h2 id="technical-details" class="text-center">Technical Details</h2>
+              
+              <p>The face of the PCB, the 256 LED matrix, is controlled by four 74HC595D shift registers put in series (U1, U2, U3, and U4). The shift register U3 is intentionally reversed to allow easier routing on the PCB. Power is provided by a CR2032 3V cell attached to the back of the PCB.</p>
+              
+              <p>In the future, I would like to find a way to slim down the PCB by sandwiching the battery in the PCB vs soldering the connector onto the back of the PCB.</p>
+              
+              <br>
+              
+              <h2 id="challenges" class="text-center">Challenges</h2>
+              
+              <p>One of my key design goals was for these boards to be CHEAP. I did not want to feel bad about giving these out to people, after all that would ruin the purpose of a business card in the first place! When I bought my first prototypes, I got the price per PCB down under 5 dollars.</p>
+              
+              <p>About 3 months after I got into this project, a small thing called COVID-19 had a large effect on the availability of parts. At one time, the price for just one of the ATTINY3227 chips that were used in this project neared 5 dollars. This created a huge challenge for getting these made at the price point I felt comfortable with. I ended up spending a lot of time on Chinese marketplace websites to source my chips, and within a couple weeks I was able to secure a much better deal on the processor and production was back online!</p>
+              
+              <p>Another challenge I had in the early days of production was soldering! The ATTINY3227 microcontroller is SMALL! The overall package is only 4x4mm. At first I was trying to get away with soldering with a basic hot air gun, which turned out to be a horrible idea! Eventually I caved and bought a PCB hotplate which worked a lot better.</p>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html> 
