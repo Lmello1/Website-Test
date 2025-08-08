@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Template - Landon Mello</title>
+    <meta name="description" content="Project template page for Landon Mello's portfolio." />
+    <script src="../indexglobal.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css.css">
+  </head>
+  <body class="bg-black">
+    <header class="flex flex-col items-center mt-4">
+        <div class="relative w-full flex justify-center mt-4">
+            <div class="w-full md:w-1/5 min-w-[300px] h-16 p-10 bg-[#393939] rounded-none border-r-8 border-b-8 border-[#181818] flex flex-col items-center justify-center text-center" style="white-space: nowrap;">
+                <h1 class="text-4xl font-bold text-white">LANDON MELLO</h1>
+                <p class="text-xl font-bold text-white">Mechanical Engineer</p>
+            </div>
+            <nav class="absolute right-0 md:right-1/5 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-0 ml-4">
+                <a href="mailto:contact@landonmello.com" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="Email Contact">Email</a>
+                <a href="https://github.com/lmello1" target="_blank" rel="noopener noreferrer" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="GitHub Profile">GitHub</a>
+                <a href="https://linkedin.com/in/landonmello" target="_blank" rel="noopener noreferrer" class="bg-[#393939] text-white font-mono border-2 border-[#262626] w-32 hover:border-[#ef6300] transition text-center" aria-label="LinkedIn Profile">LinkedIn</a>
+            </nav>
+        </div>        
+        <nav class="mt-4 flex justify-center" aria-label="Main navigation">
+            <a href="../index.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">HOME</a>
+            <a href="../blog.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">BLOG</a>
+            <a href="../projects.html" class="w-28 px-4 bg-[#393939] text-white border-2 border-[#262626] hover:border-[#ef6300] transition text-center">PROJECTS</a>
+        </nav>
+    </header>
+    <center>
+        <br>
+        <div class="w-3/5 min-w-100 p-1 border-1 bg-white">
+          <div class="p-1 border-4 border-black">
+            <div class="p-2 bg-black text-white font-mono text-center">
+              <br>
+              <h2>Modular Battery Unit (MBU)</h2>
+              <br>
+<p>I had the great opportunity to do an internship in Washington DC this summer, but one downside of being away from home is not being able to work on projects! Because I am allergic to doing nothing I decided to take on a shorter term project with my downtime outside of work. To better support an upcoming project (post coming soon), I needed a very big battery.</p>
+<br>
+<p>After finding a killer deal on two Apache hard plastic cases on Facebook marketplace I decided to use my free time in DC to make a portable modular battery unit! The first big choice was on battery chemistry, for most UPS designed LiFePo4 is the common choice however it can be limiting in some areas. For one LiFePo4 batteries are heavy and expensive making me lean toward other alternatives. I eventually decided on using salvaged 18650 cells after finding an incredible deal from <a href="https://batteryhookup.com/" target="_blank" class="text-[#ef6300] hover:underline">batteryhookup.com</a> (3200mA cells for $0.25 each! After you free them from the modem battery pack shell of course.)</p>
+<br>
+<p>Each of the two battery packs consist of 32 18650 cells in a 4s8p configuration resulting in a total capacity of right around 26Ah per pack at 14.4V! This gives the entire MBU a capacity of over 50Ah or over 700Wh, while allowing up to 45A of instantaneous current draw. Each of these packs is contained within a 3d printed case for easy insertion into the MBU to allow for fast hot-swapping of packs and to allow for airflow through the cells while inserted.</p>
+<br>
+<p>The actual case design is fairly simple, the only big challenge being finding out how I wanted to navigate securing the inside 3d printed frame to the hard plastic shell while trying to preserve the rugged waterproof nature of the case. While some sort of epoxy would remove the necessity of screws, that comes with the downside of not being able to replace any of the shell parts if they broke. I ended up deciding to drill 4 holes right in the back of the case in easy to seal spots (right in the middle of the rubber feet indents).</p>
+<br>
+<p>For power processing, the direct output from the BMS goes to 4 sets of Anderson PowerPole connectors (two on the inside and two on the outside) providing high current output for the devices that require it. There is also an inverter separated by a switch allowing for USBA/C PD output on the outside and two 120VAC power plugs on the inside.</p>
+<br>
+<p>Under high current draw one danger with 18650 cells is heat. To mitigate this issue the 3d printed frame is built with cooling channels allowing for cool air to be forced through both battery units to the exhaust at the bottom. Because of the small overall size of the unit this fan does dual action to cool all of the electronics in the inverter compartment as well.</p>
+<br>
+<div class="flex justify-center">
+<div class="max-w-2xl">
+  <img src="../img/MBU-airflow.JPG" alt="MBU airflow" class="w-full object-contain">
+  <p class="text-center mt-2 text-sm">MBU airflow side view</p>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+    </center>
+  </body>
+</html>
